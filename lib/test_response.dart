@@ -8,7 +8,7 @@ part 'test_response.g.dart';
 class TestResponse implements JsonConverterGenerics {
   final String name;
   final int size;
-  final PersonResponse person;
+  final List<PersonResponse> person;
   TestResponse(this.name, this.size, this.person);
 
   factory TestResponse.fromJson(Map<String, dynamic> json) =>

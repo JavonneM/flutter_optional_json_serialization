@@ -68,7 +68,14 @@ void main() {
       expect(call.errorCode, null);
       expect(call.errorMessage, null);
       expect(call.success, true);
-      expect(call.data, ['A', 'B', 'C']);
+      expect(call.data![0].name, 'John1');
+      expect(call.data![0].lastname, 'Doe1');
+
+      expect(call.data![1].name, 'John2');
+      expect(call.data![1].lastname, 'Doe2');
+
+      expect(call.data![2].name, 'John3');
+      expect(call.data![2].lastname, 'Doe3');
     });
 
     test('Test Complex Object call', () async {
@@ -77,9 +84,9 @@ void main() {
       expect(call.errorMessage, null);
       expect(call.success, true);
       expect(call.data!.name, 'GroupX');
-      expect(call.data!.size, 5);
-      expect(call.data!.person.name, 'John');
-      expect(call.data!.person.lastname, 'Doe');
+      expect(call.data!.size, 1);
+      expect(call.data!.person.name, 'John1');
+      expect(call.data!.person.lastname, 'Doe1');
     });
   });
 }

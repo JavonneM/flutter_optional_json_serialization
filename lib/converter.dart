@@ -1,6 +1,10 @@
 import 'package:retro_test/person_response.dart';
 import 'package:retro_test/test_response.dart';
 
+List<T>? listDataFromJson<T>(List<dynamic>? input) {
+  return input?.map((dynamic e) => dataFromJson<T>(e)).whereType<T>().toList();
+}
+
 T? dataFromJson<T>(Object? input) {
   if (input is Map<String, dynamic?>) {
     // What we did previously
@@ -11,10 +15,13 @@ T? dataFromJson<T>(Object? input) {
       return PersonResponse.fromJson(input) as T;
     }
   }
+  if (input is List) {
+    return input.map((e) => dataFromJson(e)).toList() as T?;
+  }
   return input as T; // worst case will return the Map
 }
 
-Object? dataToJson<T>(T? input) {
+Object? dataToJson<T>(dynamic? input) {
   if (input == null) {
     return null;
   }

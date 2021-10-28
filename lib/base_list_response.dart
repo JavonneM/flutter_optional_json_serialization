@@ -1,10 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import 'response.dart';
 import 'converter.dart';
-part 'base_list_response.g.dart';
 
-@JsonSerializable()
 class BaseListResponse<T> extends Response {
   BaseListResponse({
     String? errorCode,
@@ -16,11 +12,19 @@ class BaseListResponse<T> extends Response {
           success: success,
           errorMessage: errorMessage,
         );
-
   factory BaseListResponse.fromJson(Map<String, dynamic> json) =>
-      _$BaseListResponseFromJson(json);
+      BaseListResponse<T>(
+        errorCode: json['errorCode'] as String?,
+        success: json['success'] as bool,
+        errorMessage: json['errorMessage'] as String?,
+        data: listDataFromJson<T>(json['data'] as List<dynamic>?),
+      );
 
-  Map<String, dynamic> toJson() => _$BaseListResponseToJson(this);
-  @JsonKey(fromJson: dataFromJson, toJson: dataToJson)
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'errorCode': errorCode,
+        'success': success,
+        'errorMessage': errorMessage,
+        'data': dataToJson<T>(data),
+      };
   final List<T>? data;
 }
