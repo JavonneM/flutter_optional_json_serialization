@@ -37,7 +37,7 @@ void main() {
       expect(call.success, true);
       expect(call.data, ['A', 'B', 'C']);
     });
-    test('Test List Primitive', () async {
+    test('Test BaseList Primitive', () async {
       final BaseListResponse<String> call = await api.baseListPrimitiveCall();
       expect(call.errorCode, null);
       expect(call.errorMessage, null);
@@ -62,7 +62,7 @@ void main() {
       expect(call.success, true);
       expect(call.data, ['A', 'B', 'C']);
     });
-    test('Test List Person Object', () async {
+    test('Test BaseList Person Object', () async {
       final BaseListResponse<PersonResponse> call =
           await api.baseListPersonObjectCall();
       expect(call.errorCode, null);
