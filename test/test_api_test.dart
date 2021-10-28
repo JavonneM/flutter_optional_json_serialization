@@ -77,9 +77,15 @@ void main() {
       expect(call.errorMessage, null);
       expect(call.success, true);
       expect(call.data!.name, 'GroupX');
-      expect(call.data!.size, 5);
-      expect(call.data!.person.name, 'John');
-      expect(call.data!.person.lastname, 'Doe');
+      expect(call.data!.size, 3);
+      expect(call.data!.people[0].name, 'John1');
+      expect(call.data!.people[0].lastname, 'Doe1');
+
+      expect(call.data!.people[0].name, 'John2');
+      expect(call.data!.people[0].lastname, 'Doe2');
+
+      expect(call.data!.people[0].name, 'John3');
+      expect(call.data!.people[0].lastname, 'Doe3');
     });
   });
 }
