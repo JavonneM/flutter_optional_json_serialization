@@ -1,7 +1,7 @@
 import 'package:retro_test/person_response.dart';
 import 'package:retro_test/test_response.dart';
 
-T dataFromJson<T>(Object? input) {
+T? dataFromJson<T>(Object? input) {
   if (input is Map<String, dynamic?>) {
     // What we did previously
     if (T == TestResponse) {
