@@ -35,6 +35,6 @@ abstract class TestApi {
   @GET('https://run.mocky.io/v3/bb53961f-39dd-4235-bd2c-198d44481999')
   Future<BaseResponse<PersonResponse>> personObjectCall();
 
-  @GET('https://run.mocky.io/v3/7e5dfdda-581e-47d3-bfe8-cd256d62810c')
+  @GET('https://run.mocky.io/v3/eb89dd9d-e390-4a4b-9c05-3b56a744256a')
   Future<BaseResponse<TestResponse>> complexObjectCall();
 }
