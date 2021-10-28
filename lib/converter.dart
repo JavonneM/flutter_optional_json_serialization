@@ -1,54 +1,32 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:retro_test/person_response.dart';
 import 'package:retro_test/test_response.dart';
 
-class Converter<T> implements JsonConverter<T, Object> {
-  const Converter();
-
-  @override
-  T fromJson(Object json) {
-    if (json is List) {
-      /// In this case T is List<String>? so when we recursively call fromJson
-      /// we will try to case the String to List<String>? at the very last return
-      /// in this method
-      json.map((e) => fromJson(json)).toList();
-    }
-    if (json is Map<String, dynamic>) {
-      final T? obj = parseObject(json);
-      if (obj != null) {
-        return obj;
-      }
-      // This will only work if `json` is a native JSON type:
-      //   num, String, bool, null, etc
-      // *and* is assignable to `T`.
-    }
-    return json as T;
-  }
-
-  T? parseObject(Map<String, dynamic> json) {
-    // It seems all T's here are of optional types
-    // There for T == TestResponse is not true
-    // and T == TestResponse? is not valid. or (T == (TestResponse?))
+T dataFromJson<T>(Object? input) {
+  if (input is Map<String, dynamic?>) {
+    // What we did previously
     if (T == TestResponse) {
-      return TestResponse.fromJson(json) as T;
+      return TestResponse.fromJson(input) as T;
     }
     if (T == PersonResponse) {
-      return PersonResponse.fromJson(json) as T;
+      return PersonResponse.fromJson(input) as T;
     }
-    return json as T;
   }
+  return input as T; // worst case will return the Map
+}
 
-  @override
-  Object toJson(T object) {
-    if (object is TestResponse) {
-      return object.toJson();
-    }
-    if (object is PersonResponse) {
-      return object.toJson();
-    }
-    // This will only work if `object` is a native JSON type:
-    //   num, String, bool, null, etc
-    // Or if it has a `toJson()` function`.
-    return object as Object;
+Object? dataToJson<T>(T? input) {
+  if (input == null) {
+    return null;
   }
+  if (input is List) {
+    final List<dynamic> value =
+        input.map<dynamic>((dynamic e) => dataToJson<dynamic>(e)).toList();
+    print(value.toString());
+    return value;
+  }
+  return (input as JsonConverterGenerics).toJson();
+}
+
+abstract class JsonConverterGenerics {
+  Map<String, dynamic> toJson();
 }

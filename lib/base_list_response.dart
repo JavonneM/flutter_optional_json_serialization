@@ -21,6 +21,6 @@ class BaseListResponse<T> extends Response {
       _$BaseListResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$BaseListResponseToJson(this);
-  @Converter()
+  @JsonKey(fromJson: dataFromJson, toJson: dataToJson)
   final List<T>? data;
 }

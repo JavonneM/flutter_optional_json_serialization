@@ -12,8 +12,8 @@ part 'test_api.g.dart';
 abstract class TestApi {
   factory TestApi(Dio dio) => _TestApi(dio);
 
-  @GET('https://run.mocky.io/v3/8e692f67-e0da-4f55-9815-81a75ce2c9eb')
-  Future<BaseResponse<void>> voidCall();
+  // @GET('https://run.mocky.io/v3/8e692f67-e0da-4f55-9815-81a75ce2c9eb')
+  // Future<BaseResponse<void>> voidCall();
 
   @GET('https://run.mocky.io/v3/e09e00e2-d77e-490c-8a7a-860609b483ad')
   Future<BaseResponse<dynamic>> dynamicCall();

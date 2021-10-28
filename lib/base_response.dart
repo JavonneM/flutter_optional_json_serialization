@@ -21,6 +21,6 @@ class BaseResponse<T> extends Response {
       _$BaseResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$BaseResponseToJson(this);
-  @Converter()
+  @JsonKey(fromJson: dataFromJson, toJson: dataToJson)
   final T? data;
 }
