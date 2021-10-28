@@ -1,6 +1,8 @@
 # retro_test
 
-A new Flutter project.
+This shows an example of how the json_serializable package is unable to correctly decode responses from an api. I have found success using the `@JsonKey(fromJson: (){}, toJson: (){}))` on the generic field.
+
+Don't forget to generate code with build_runner `flutter pub run build_runner build`
 
 ## Getting Started
 
