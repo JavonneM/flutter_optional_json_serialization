@@ -81,11 +81,11 @@ void main() {
       expect(call.data!.people[0].name, 'John1');
       expect(call.data!.people[0].lastname, 'Doe1');
 
-      expect(call.data!.people[0].name, 'John2');
-      expect(call.data!.people[0].lastname, 'Doe2');
+      expect(call.data!.people[1].name, 'John2');
+      expect(call.data!.people[1].lastname, 'Doe2');
 
-      expect(call.data!.people[0].name, 'John3');
-      expect(call.data!.people[0].lastname, 'Doe3');
+      expect(call.data!.people[2].name, 'John3');
+      expect(call.data!.people[2].lastname, 'Doe3');
     });
   });
 }
