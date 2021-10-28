@@ -54,7 +54,7 @@ void main() {
       expect(call.data!.lastname, 'Doe');
     });
 
-    test('Test BaseList Person Object', () async {
+    test('Test List Person Object', () async {
       final BaseResponse<List<PersonResponse>> call =
           await api.listPersonObjectCall();
       expect(call.errorCode, null);
