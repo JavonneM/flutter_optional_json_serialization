@@ -62,7 +62,7 @@ void main() {
       expect(call.success, true);
       expect(call.data, ['A', 'B', 'C']);
     });
-    test('Test List Person Object', () async {
+    test('Test BaseList Person Object', () async {
       final BaseListResponse<PersonResponse> call =
           await api.baseListPersonObjectCall();
       expect(call.errorCode, null);

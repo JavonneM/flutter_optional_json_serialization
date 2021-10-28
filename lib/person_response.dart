@@ -6,6 +6,7 @@ part 'person_response.g.dart';
 @JsonSerializable()
 class PersonResponse implements JsonConverterGenerics {
   final String name;
+  @JsonKey(name: 'lastName')
   final String lastname;
 
   PersonResponse(this.name, this.lastname);
